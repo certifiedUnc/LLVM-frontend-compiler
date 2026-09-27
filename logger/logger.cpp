@@ -1,16 +1,18 @@
-#include "logger/logger.h"
+#include "logger.h"
+#include "parser/ast.h"
+#include <cstdio>
 
-std::unique_ptr<ExprAST> LogError(const char* Str){
-    fprintf(stderr, "LogError: %s\n", Str);
-    return nullptr;
+std::unique_ptr<ExprAST> LogError(const char *Str) {
+  fprintf(stderr, "Error: %s\n", Str);
+  return nullptr;
 }
 
-std::unique_ptr<PrototypeAST> LogErrorP(const char* Str){
-    LogError(Str);
-    return nullptr;
+std::unique_ptr<PrototypeAST> LogErrorP(const char *Str) {
+  LogError(Str);
+  return nullptr;
 }
 
-llvm::Value *LogErrorV(const char* Str){
-    LogError(Str);
-    return nullptr;
+llvm::Value *LogErrorV(const char *Str) {
+  LogError(Str);
+  return nullptr;
 }
